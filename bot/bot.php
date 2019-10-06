@@ -16,4 +16,5 @@ $bot->command('help', function ($message) use ($bot) {
 });
 
 $bot->run();
+return 1;
 ?>
