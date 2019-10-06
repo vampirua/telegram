@@ -1,16 +1,18 @@
 <?php
 require_once "vendor/autoload.php";
-try {
-    $bot = new \TelegramBot\Api\Client('982221383:AAEgNznDDyQdYXeC_6eoO33jZ3mXDE_YM88');
-    $bot->command('devanswer', function ($message) use ($bot) {
-        preg_match_all('/{"text":"(.*?)",/s', file_get_contents('http://devanswers.ru/'), $result);
-        $bot->sendMessage($message->getChat()->getId(),
-            str_replace("<br/>", "\n", json_decode('"' . $result[1][0] . '"')));
-    });
-    $bot->command('qaanswer', function ($message) use ($bot) {
-        $bot->sendMessage($message->getChat()->getId(), file_get_contents('http://qaanswers.ru/qwe.php'));
-    });
-    $bot->run();
-} catch (\TelegramBot\Api\Exception $e) {
-    $e->getMessage();
-}
+$token = "982221383:AAEgNznDDyQdYXeC_6eoO33jZ3mXDE_YM88";
+$bot = new \TelegramBot\Api\Client($token);
+// команда для start
+$bot->command('start', function ($message) use ($bot) {
+    $answer = 'Добро пожаловать!';
+    $bot->sendMessage($message->getChat()->getId(), $answer);
+});
+
+// команда для помощи
+$bot->command('help', function ($message) use ($bot) {
+    $answer = 'Команды:
+/help - вывод справки';
+    $bot->sendMessage($message->getChat()->getId(), $answer);
+});
+
+$bot->run();
