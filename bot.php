@@ -8,16 +8,18 @@ $json = file_get_contents('https://api.privatbank.ua/p24api/exchange_rates?json&
 $obj = json_decode($json);
 
 foreach ($obj as $item) {
+    foreach ($item as $value) {
+        if ($value->currency == 'USD') {
+            $sale = $value->saleRate;
+            $buy = $value->purchaseRate;
+            $bot->command('USD', function ($message, $sale, $buy) use ($bot) {
 
-    if ($item->currency == 'USD') {
-        $sale = $item->saleRate;
-        $buy = $item->purchaseRate;
-        $bot->command('USD', function ($message, $sale, $buy) use ($bot) {
-
-            $answer = " Sale :$sale , Buy : $buy";
-            $bot->sendMessage($message->getChat()->getId(), $answer);
-        });
+                $answer = " Sale :$sale , Buy : $buy";
+                $bot->sendMessage($message->getChat()->getId(), $answer);
+            });
+        }
     }
+
 }
 
 $bot->command('start', function ($message) use ($bot) {
