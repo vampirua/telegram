@@ -7,7 +7,7 @@ $bot = new \TelegramBot\Api\Client($token);
 $json = file_get_contents('https://api.privatbank.ua/p24api/exchange_rates?json&date=06.10.2019');
 $obj = json_decode($json);
 
-foreach ($json as $item) {
+foreach ($obj as $item) {
 
     if ($item->currency == 'USD') {
         $sale = $item->saleRate;
