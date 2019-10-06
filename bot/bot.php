@@ -15,7 +15,5 @@ $bot->command('help', function ($message) use ($bot) {
     $bot->sendMessage($message->getChat()->getId(), $answer);
 });
 
+$bot->run();
 ?>
-<p>
-    hi
-</p>
