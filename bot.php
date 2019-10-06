@@ -4,22 +4,22 @@ $token = "982221383:AAEgNznDDyQdYXeC_6eoO33jZ3mXDE_YM88";
 $bot = new \TelegramBot\Api\Client($token);
 
 
-$json = file_get_contents('https://api.privatbank.ua/p24api/exchange_rates?json&date=06.10.2019');
-$obj = json_decode($json);
+$bot->command('USD', function ($message) use ($bot) {
+    $json = file_get_contents('https://api.privatbank.ua/p24api/exchange_rates?json&date=06.10.2019');
+    $obj = json_decode($json);
+    foreach ($obj as $item) {
+        foreach ($item as $value) {
+            if ($value->currency == 'USD') {
 
-foreach ($obj as $item) {
-    foreach ($item as $value) {
-        if ($value->currency == 'USD') {
-            $sale = $value->saleRate;
-            $buy = $value->purchaseRate;
-            $bot->command('USD', function ($message, $sale, $buy) use ($bot) {
-
-                $answer = " Sale :$sale , Buy : $buy";
-                $bot->sendMessage($message->getChat()->getId(), $answer);
-            });
+                $sale = $value->saleRate;
+                $buy = $value->purchaseRate;
+            }
         }
     }
-}
+    $answer = " Sale :$sale , Buy : $buy";
+    $bot->sendMessage($message->getChat()->getId(), $answer);
+
+});
 
 $bot->command('start', function ($message) use ($bot) {
     $answer = 'Добро пожаловать!';
