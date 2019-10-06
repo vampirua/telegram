@@ -12,9 +12,9 @@ foreach ($obj as $item) {
         if ($value->currency == 'USD') {
             $sale = $value->saleRate;
             $buy = $value->purchaseRate;
-            $bot->command('USD', function ($message) use ($bot) {
+            $bot->command('USD', function ($message, $sale, $buy) use ($bot) {
 
-                $answer = " Sale : , Buy : ";
+                $answer = " Sale :$sale , Buy : $buy";
                 $bot->sendMessage($message->getChat()->getId(), $answer);
             });
         }
