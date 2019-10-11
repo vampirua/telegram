@@ -23,9 +23,9 @@ $bot->command('USD', function ($message) use ($bot, $obj, $current_date) {
 
         }
     }
-    $answer = " Sale :$sale , Buy : $buy";
+    $messageText = " Sale :$sale , Buy : $buy";
     $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("one", "two", "three")), true);
-    $bot->sendMessage($message->getChat()->getId(), $answer, null, false, null, $keyboard);
+    $bot->sendMessage($message->getChat()->getId(), $messageText, null, false, null, $keyboard);
 
 });
 
