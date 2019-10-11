@@ -7,40 +7,6 @@ $obj = json_decode($json);
 date_default_timezone_set('Ukraine/Kiev'); // CDT
 
 $current_date = date('d/m/Y');
-function send($method, $data)
-{
-    $url = "https://api.telegram.org/bot982221383:AAEgNznDDyQdYXeC_6eoO33jZ3mXDE_YM88". "/" . $method;
-
-    if (!$curld = curl_init()) {
-        exit;
-    }
-    curl_setopt($curld, CURLOPT_POST, true);
-    curl_setopt($curld, CURLOPT_POSTFIELDS, $data);
-    curl_setopt($curld, CURLOPT_URL, $url);
-    curl_setopt($curld, CURLOPT_RETURNTRANSFER, true);
-    $output = curl_exec($curld);
-    curl_close($curld);
-    return $output;
-}
-
-$keyboard = [
-    'inline_keyboard' => [
-        [
-            ['text' => 'forward me to groups', 'callback_data' => 'someString']
-        ]
-    ]
-];
-$encodedKeyboard = json_encode($keyboard);
-$parameters =
-    array(
-        'chat_id' => $chatId,
-        'text' => $response,
-        'reply_markup' => $encodedKeyboard
-    );
-
-send('sendMessage', $parameters);
-
-
 
 $bot->command('USD', function ($message) use ($bot, $obj, $current_date) {
     foreach ($obj as $item) {
@@ -91,6 +57,7 @@ $bot->command('BTC', function ($message) use ($bot, $obj, $current_date) {
 
 });
 
+$chat_id = $bot->inlineQuery('USD','bot');
 
 $bot->run();
 ?>
