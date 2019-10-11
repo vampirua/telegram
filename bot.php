@@ -57,7 +57,6 @@ $bot->command('BTC', function ($message) use ($bot, $obj, $current_date) {
 
 });
 
-$chat_id = $bot->inlineQuery('USD','bot');
 
 $bot->run();
 ?>
