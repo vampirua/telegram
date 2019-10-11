@@ -9,8 +9,8 @@ date_default_timezone_set('Ukraine/Kiev'); // CDT
 $current_date = date('d/m/Y');
 
 
-$bot->command('/start', function ($message) use ($bot, $obj, $current_date) {
-    $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("one", "two", "three")), true); // true for one-time keyboard
+$bot->command('start', function ($message) use ($bot, $obj, $current_date) {
+    $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("/USD", "/EUR", "/RUR",'/BTC')), true); // true for one-time keyboard
     $messageText = ' ff';
     $bot->sendMessage($message->getChat()->getId(), $messageText, null, false, null, $keyboard);
 });
@@ -24,7 +24,7 @@ $bot->command('USD', function ($message) use ($bot, $obj, $current_date) {
         }
     }
     $messageText = " Sale :$sale , Buy : $buy";
-    $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("one", "two", "three")), true);
+    $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("/USD", "/EUR", "/RUR",'/BTC')), true);
     $bot->sendMessage($message->getChat()->getId(), $messageText, null, false, null, $keyboard);
 
 });
@@ -37,9 +37,9 @@ $bot->command('EUR', function ($message) use ($bot, $obj, $current_date) {
 
         }
     }
-    $answer = " Sale :$sale , Buy : $buy";
-    $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("one", "two", "three")), true);
-    $bot->sendMessage($message->getChat()->getId(), $answer, null, false, null, $keyboard);
+    $messageText = " Sale :$sale , Buy : $buy";
+    $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("/USD", "/EUR", "/RUR",'/BTC')), true);
+    $bot->sendMessage($message->getChat()->getId(), $messageText, null, false, null, $keyboard);
 
 });
 $bot->command('RUR', function ($message) use ($bot, $obj, $current_date) {
@@ -49,9 +49,9 @@ $bot->command('RUR', function ($message) use ($bot, $obj, $current_date) {
             $buy = $item->sale . 'UAH' . '   ' . " $current_date";
         }
     }
-    $answer = " Sale :$sale , Buy : $buy";
-    $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("one", "two", "three")), true);
-    $bot->sendMessage($message->getChat()->getId(), $answer, null, false, null, $keyboard);
+    $messageText = " Sale :$sale , Buy : $buy";
+    $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("/USD", "/EUR", "/RUR",'/BTC')), true);
+    $bot->sendMessage($message->getChat()->getId(), $messageText, null, false, null, $keyboard);
 
 });
 $bot->command('BTC', function ($message) use ($bot, $obj, $current_date) {
@@ -61,9 +61,9 @@ $bot->command('BTC', function ($message) use ($bot, $obj, $current_date) {
             $buy = $item->sale . 'UAH' . '   ' . " $current_date";
         }
     }
-    $answer = " Sale :$sale , Buy : $buy";
-    $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("one", "two", "three")), true);
-    $bot->sendMessage($message->getChat()->getId(), $answer, null, false, null, $keyboard);
+    $messageText = " Sale :$sale , Buy : $buy";
+    $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("/USD", "/EUR", "/RUR",'/BTC')), true);
+    $bot->sendMessage($message->getChat()->getId(), $messageText, null, false, null, $keyboard);
 
 });
 
