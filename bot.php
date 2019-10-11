@@ -6,7 +6,7 @@ $json = file_get_contents('https://api.privatbank.ua/p24api/pubinfo?json&exchang
 $obj = json_decode($json);
 date_default_timezone_set('Ukraine/Kiev'); // CDT
 
-$current_date = date('d/m/Y == H:i:s');
+$current_date = date('d/m/Y');
 
 $bot->command('USD', function ($message) use ($bot, $obj, $current_date) {
     foreach ($obj as $item) {
