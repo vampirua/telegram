@@ -9,7 +9,7 @@ date_default_timezone_set('Ukraine/Kiev'); // CDT
 $current_date = date('d/m/Y');
 function send($method, $data)
 {
-    $url = "https://api.telegram.org/bot<Bot-Token>". "/" . $method;
+    $url = "https://api.telegram.org/bot982221383:AAEgNznDDyQdYXeC_6eoO33jZ3mXDE_YM88". "/" . $method;
 
     if (!$curld = curl_init()) {
         exit;
