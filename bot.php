@@ -11,6 +11,8 @@ $bot->command('USD', function ($message) use ($bot, $obj) {
         if ($item->ccy == 'USD') {
             $sale = $item->buy.'UAH';
             $buy = $item->sale.'UAH';
+            "<br>";
+            echo "Today is " . date("Y/m/d") . "<br>";
         }
     }
     $answer = " Sale :$sale , Buy : $buy";
@@ -23,6 +25,8 @@ $bot->command('EUR', function ($message) use ($bot, $obj) {
         if ($item->ccy == 'EUR') {
             $sale = $item->buy.'UAH';
             $buy = $item->sale.'UAH';
+            "<br>";
+            echo "Today is " . date("Y/m/d") . "<br>";
         }
     }
     $answer = " Sale :$sale , Buy : $buy";
@@ -34,6 +38,21 @@ $bot->command('RUR', function ($message) use ($bot, $obj) {
         if ($item->ccy == 'RUR') {
             $sale = $item->buy.'UAH';
             $buy = $item->sale.'UAH';
+            "<br>";
+            echo "Today is " . date("Y/m/d") . "<br>";
+        }
+    }
+    $answer = " Sale :$sale , Buy : $buy";
+    $bot->sendMessage($message->getChat()->getId(), $answer);
+
+});
+$bot->command('BTC', function ($message) use ($bot, $obj) {
+    foreach ($obj as $item) {
+        if ($item->ccy == 'BTC') {
+            $sale = $item->buy.'UAH';
+            $buy = $item->sale.'UAH';
+            "<br>";
+            echo "Today is " . date("Y/m/d") . "<br>";
         }
     }
     $answer = " Sale :$sale , Buy : $buy";
