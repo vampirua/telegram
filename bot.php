@@ -9,13 +9,8 @@ date_default_timezone_set('Ukraine/Kiev'); // CDT
 $current_date = date('d/m/Y');
 
 
-$keyboard = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup(
-    [
-        [
-            ['text' => 'link', 'url' => 'https://core.telegram.org']
-        ]
-    ]
-);
+
+
 
 
 
@@ -69,4 +64,10 @@ $bot->command('BTC', function ($message) use ($bot, $obj, $current_date) {
 });
 
 $bot->run();
+
+$bot = new \TelegramBot\Api\BotApi('982221383:AAEgNznDDyQdYXeC_6eoO33jZ3mXDE_YM88');
+
+$keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("one", "two", "three")), true); // true for one-time keyboard
+
+$bot->sendMessage($chatId, $messageText, null, false, null, $keyboard);
 ?>
