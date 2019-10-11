@@ -13,8 +13,8 @@ $bot->command('USD', function ($message) use ($bot, $obj, $current_date) {
         var_dump($item);
         if ($item->ccy == 'USD') {
             $sale = $item->buy . 'UAH';
-            $buy = $item->sale . 'UAH'.
-                "$current_date";
+            $buy = $item->sale . 'UAH';
+            echo "/n $current_date";
 
         }
     }
