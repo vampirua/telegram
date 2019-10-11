@@ -13,9 +13,9 @@ $bot->command('USD', function ($message) use ($bot, $obj, $current_date) {
         var_dump($item);
         if ($item->ccy == 'USD') {
             $sale = $item->buy . 'UAH';
-            $buy = $item->sale . 'UAH';
-            "<br>";
-            echo "Today is " . $current_date . "<br>";
+            $buy = $item->sale . 'UAH'.
+            $current_date;
+
         }
     }
     $answer = " Sale :$sale , Buy : $buy";
