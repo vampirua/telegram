@@ -2,19 +2,17 @@
 require_once "vendor/autoload.php";
 $token = "982221383:AAEgNznDDyQdYXeC_6eoO33jZ3mXDE_YM88";
 $bot = new \TelegramBot\Api\Client($token);
+$json = file_get_contents('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5');
+$obj = json_decode($json);
 
-
-$bot->command('USD', function ($message) use ($bot) {
-    $json = file_get_contents('https://api.privatbank.ua/p24api/exchange_rates?json&date=06.10.2019');
-    $obj = json_decode($json);
+$bot->command('USD', function ($message) use ($bot,$obj) {
     foreach ($obj as $item) {
-        foreach ($item as $value) {
-            if ($value->currency == 'USD') {
+        var_dump($item);
+            if ($item->ccy == 'USD') {
 
-                $sale = $value->saleRate;
-                $buy = $value->purchaseRate;
+                var_dump($sale = $item->buy);
+                $buy = $item->sale;
             }
-        }
     }
     $answer = " Sale :$sale , Buy : $buy";
     $bot->sendMessage($message->getChat()->getId(), $answer);
