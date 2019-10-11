@@ -13,7 +13,13 @@ $current_date = date('d/m/Y');
 
 
 $bot->command('ff', function ($message) use ($bot, $obj, $current_date) {
-    $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("one", "two", "three")), true); // true for one-time keyboard
+    $keyboard = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup(
+        [
+            [
+                ['text' => 'link', 'url' => 'https://core.telegram.org']
+            ]
+        ]
+    );
     $messageText = ' ff';
     $bot->sendMessage($message->getChat()->getId(), $messageText, null, false, null, $keyboard);
 });
