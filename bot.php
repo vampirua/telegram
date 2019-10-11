@@ -57,6 +57,7 @@ $bot->command('BTC', function ($message) use ($bot, $obj, $current_date) {
 
 });
 
+$bot->run();
 
 $api = 'https://api.telegram.org/bot' . $token;
 $output = json_decode(file_get_contents('php://input'), TRUE);
@@ -85,7 +86,4 @@ function sendMessage($chat_id, $message, $replyMarkup)
 {
     file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message) . '&reply_markup=' . $replyMarkup);
 }
-
-
-$bot->run();
 ?>
