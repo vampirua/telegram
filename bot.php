@@ -57,8 +57,8 @@ $bot->command('RUR', function ($message) use ($bot, $obj, $current_date) {
 $bot->command('BTC', function ($message) use ($bot, $obj, $current_date) {
     foreach ($obj as $item) {
         if ($item->ccy == 'BTC') {
-            $sale = $item->buy . 'UAH';
-            $buy = $item->sale . 'UAH' . '   ' . " $current_date";
+            $sale = $item->buy . 'USD';
+            $buy = $item->sale . 'USD' . '   ' . " $current_date";
         }
     }
     $messageText = " Sale :$sale , Buy : $buy";
